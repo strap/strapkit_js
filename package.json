@@ -1,0 +1,12 @@
+{
+  "name": "strapkit_js",
+  "version": "0.2.0",
+  "description": "Strap Kit - The platform that goes everyWear. Build one app for all wearable platforms",
+  "main": "strapkit.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marcelle Bonterre",
+  "license": "ISC",
+  "dependencies": {}
+}
