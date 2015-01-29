@@ -1,6 +1,6 @@
-var strapkit = require('strapkit'),
-    utils = require('cordova/utils'),
-    base64 = require('cordova/base64'),
+var strapkit = require('../../strapkit'),
+    utils = require('../../common/utils'),
+    base64 = require('../../common/base64'),
     jsToNativeModes = {
         PROMPT: 0,
         JS_OBJECT: 1
@@ -42,7 +42,7 @@ function androidExec(success, fail, service, action, args) {
         }
     }
 
-    var callbackId = service + cordova.callbackId++,
+    var callbackId = service + strapkit.callbackId++,
         argsJson = JSON.stringify(args);
 
     if (success || fail) {

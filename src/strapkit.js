@@ -1,8 +1,5 @@
 
 var strapkit = {
-    version:PLATFORM_VERSION_BUILD_LABEL,
-    platformVersion:PLATFORM_VERSION_BUILD_LABEL,
-    platformId:platform.id,
 
     /**
      * Plugin callback mechanism.
@@ -71,7 +68,7 @@ var strapkit = {
             throw err;
         }
     },
-    require('strapkit_features.js');
+    features: require('./strapkit_features.js')
 };
 
 

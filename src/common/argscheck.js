@@ -1,5 +1,5 @@
-var exec = require('cordova/exec');
-var utils = require('cordova/utils');
+var exec = require('../platform/android/exec');
+var utils = require('./utils');
 
 var moduleExports = module.exports;
 
