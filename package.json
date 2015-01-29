@@ -13,6 +13,7 @@
   "author": "Marcelle Bonterre",
   "license": "ISC",
   "dependencies": {
+    "browserify": "^8.1.1",
     "grunt": "^0.4.5"
   }
 }
