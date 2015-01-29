@@ -1,7 +1,7 @@
 
 module.exports = {
-    klass: require('../features/klass.js'),
-    Page: require('../features/page.js'),
+    klass: require('./klass.js'),
+    Page: require('./page.js'),
 	'features': [
         {
             'id': 'com.strap.ui.page',

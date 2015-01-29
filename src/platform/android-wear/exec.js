@@ -1,6 +1,6 @@
-var strapkit = require('../../strapkit'),
-    utils = require('../../common/utils'),
-    base64 = require('../../common/base64'),
+var strapkit = require('./strapkit'),
+    utils = require('./utils'),
+    base64 = require('./base64'),
     jsToNativeModes = {
         PROMPT: 0,
         JS_OBJECT: 1

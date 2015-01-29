@@ -1,4 +1,4 @@
-var exec = require('../platform/android/exec');
+var exec = require('./exec');
 var utils = require('./utils');
 
 var moduleExports = module.exports;
