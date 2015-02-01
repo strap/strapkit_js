@@ -29,11 +29,23 @@ module.exports = function(grunt){
                 flatten: true,
                 filter: 'isFile',
             }
-        } 
+        },
+        browserify: {
+            androidwear: {
+                src: 'pkg/android-wear/src/strapkit.js',
+                dest: 'pkg/android-wear/strapkit.js',
+                options: { 
+                    browserifyOptions: { 
+                        "standalone": "StrapKit" 
+                    }
+                }                                           
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-browserify');
 
     grunt.loadTasks('tasks');
 
