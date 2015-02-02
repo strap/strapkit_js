@@ -1,4 +1,6 @@
 
+var fs = require('fs');
+
 module.exports = function(grunt) {
     grunt.registerMultiTask('addFeatures', 'Add features to strapkit', function() {
         
@@ -13,8 +15,9 @@ module.exports = function(grunt) {
             grunt.file.expand({
                 cwd: src
             }, "**/*").forEach(function(path) {
-                console.log(src + path);
-                grunt.file.copy(src + path, platformPath + path);
+                if (!fs.statSync(src + path).isDirectory()) {
+                    grunt.file.copy(src + path, platformPath + path);
+                }
             });
         }); 
     });

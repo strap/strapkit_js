@@ -1,4 +1,4 @@
-var strapkit = require('./strapkit'),
+var strapkit = require('./callbacks'),
     utils = require('./utils'),
     base64 = require('./base64'),
     jsToNativeModes = {

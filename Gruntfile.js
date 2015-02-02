@@ -32,11 +32,12 @@ module.exports = function(grunt){
         },
         browserify: {
             androidwear: {
-                src: 'pkg/android-wear/src/strapkit.js',
+                src: ['pkg/android-wear/src/exec.js', 'pkg/android-wear/src/strapkit.js'],
                 dest: 'pkg/android-wear/strapkit.js',
                 options: { 
                     browserifyOptions: { 
-                        "standalone": "StrapKit" 
+                        "standalone": "StrapKit",
+                        "entry": "pkg/android-wear/src/strapkit.js"
                     }
                 }                                           
             }
@@ -50,5 +51,6 @@ module.exports = function(grunt){
     grunt.loadTasks('tasks');
 
     grunt.registerTask('default', ['clean', 'build']);
+    grunt.registerTask('generate', ['clean', 'copy', 'addFeatures', 'browserify']);
 
 };
