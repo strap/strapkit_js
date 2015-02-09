@@ -1,1 +1,1 @@
-module.exports = require('./strapkit_features.js');
+module.exports = require('./strapkit_plugins.js');

@@ -18,22 +18,6 @@ var callbacks = {
         INVALID_ACTION: 7,
         JSON_EXCEPTION: 8,
         ERROR: 9
-    },
-
-    /**
-     * Called by native code when returning successful result from an action.
-     */
-    callbackSuccess: function(callbackId, args) {
-        strapkit.callbackFromNative(callbackId, true, args.status, [args.message], args.keepCallback);
-    },  
-    
-    /**
-     * Called by native code when returning error result from an action.
-     */
-    callbackError: function(callbackId, args) {
-        // TODO: Deprecate callbackSuccess and callbackError in favour of callbackFromNative.
-        // Derive success from status.
-        strapkit.callbackFromNative(callbackId, false, args.status, [args.message], args.keepCallback);
     },  
     
     /**
@@ -41,12 +25,19 @@ var callbacks = {
      */
     callbackFromNative: function(callbackId, isSuccess, status, args, keepCallback) {
         try {
-            var callback = strapkit.callbacks[callbackId];
+            var argJson = args;
+            try {
+                argJson = JSON.parse(args);
+            } catch (err) {
+                // Do nothing
+            }
+            argJson = [argJson];
+            var callback = callbacks.callbacks[callbackId];
             if (callback) {
-                if (isSuccess && status == strapkit.callbackStatus.OK) {
-                    callback.success && callback.success.apply(null, args);
+                if (isSuccess && status == callbacks.callbackStatus.OK) {
+                    callback.success && callback.success.apply(null, argJson);
                 } else if (!isSuccess) {
-                    callback.fail && callback.fail.apply(null, args);
+                    callback.fail && callback.fail.apply(null, argJson);
                 }
                 /*
                 else
@@ -57,7 +48,7 @@ var callbacks = {
                 */
                 // Clear callback if not expecting any more results
                 if (!keepCallback) {
-                    delete strapkit.callbacks[callbackId];
+                    delete callbacks.callbacks[callbackId];
                 }   
             }   
         }   
